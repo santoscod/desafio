@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Todos os Roteiros</title>
+</head>
+<body>
+    <h1>Nossos Roteiros</h1>
+    <a href="/countries/">&larr; Ver todos os países</a>
+    <hr>
+
+    {% for itinerary in itineraries %}
+        <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+            <h2>
+                <a href="/itineraries/{{ itinerary.id }}/">{{ itinerary.title }}</a>
+            </h2>
+            <p><strong>Destino:</strong> {{ itinerary.country.name }}</p>
+            <p>{{ itinerary.description }}</p>
+            <p>
+                De {{ itinerary.start_date|date:"d/m/Y" }}
+                até {{ itinerary.departure_date|date:"d/m/Y" }}
+            </p>
+        </div>
+    {% empty %}
+        <p>Nenhum roteiro cadastrado no momento.</p>
+    {% endfor %}
+
+</body>
+</html>

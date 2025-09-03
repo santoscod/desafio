@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Roteiro: {{ itinerary.title }}</title>
+</head>
+<body>
+    <a href="/itineraries/">&larr; Voltar para todos os roteiros</a>
+    <hr>
+
+    <h1>{{ itinerary.title }}</h1>
+    
+    {% if itinerary.image %}
+        <img src="{{ itinerary.image.url }}" alt="Imagem de {{ itinerary.title }}" width="400">
+    {% endif %}
+
+    <h2>Destino: {{ itinerary.country.name }}</h2>
+    <p><strong>Período:</strong> 
+        De {{ itinerary.start_date|date:"d/m/Y" }} 
+        até {{ itinerary.departure_date|date:"d/m/Y" }}
+    </p>
+
+    {% if itinerary.price %}
+        <p><strong>Preço:</strong> R$ {{ itinerary.price }}</p>
+    {% endif %}
+
+    <h2>Descrição</h2>
+    <p>{{ itinerary.description }}</p>
+
+</body>
+</html>
